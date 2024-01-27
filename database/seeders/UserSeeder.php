@@ -18,48 +18,59 @@ class UserSeeder extends Seeder
         DB::raw('CREATE EXTENSION IF NOT EXISTS "pgcrypto"');
         DB::table('users')->insert([
             'name' => 'Gaston Fernandez Flores',
-            'email' => 'sfernandezf@cochabamba.bo',
+            'email' => 'gasfer@cochabamba.bo',
             'email_verified_at' => now(),
             'password' => Hash::make('admin123'),
             'role' => 'ADMIN',
             'genero' => 'MASCULINO', //FEMENINO
-            'ofice' => 'Departamento de Desarrollo de Sistemas DDSI',
+            'ofice' => 'ADMINISTRADOR SISTEMA',
             'created_at' => now(),
             'updated_at' => now()
         ]);
 
         DB::table('users')->insert([
-            'name' => 'usuario 2',
+            'name' => 'Amadeo Rafael Arroyo',
+            'email' => 'amadeo@cochabamba.bo',
+            'email_verified_at' => now(),
+            'password' => Hash::make('admin123'),
+            'role' => 'ADMIN',
+            'genero' => 'MASCULINO', //FEMENINO
+            'ofice' => 'JEFE DE UNIDAD',
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+
+        DB::table('users')->insert([
+            'name' => 'USUARIO UNO',
             'email' => 'usuario1@cochabamba.bo',
             'email_verified_at' => now(),
-            'password' => Hash::make('admin123'),
-            'role' => 'ADMIN',
+            'password' => Hash::make('secret'),
+            'role' => 'USUARIO',
             'genero' => 'MASCULINO', //FEMENINO
-            'ofice' => 'Departamento de Desarrollo de Sistemas DDSI',
+            'ofice' => 'PROFECIONAL 1',
             'created_at' => now(),
             'updated_at' => now()
         ]);
-
         DB::table('users')->insert([
-            'name' => 'usuario 2',
+            'name' => 'USUARIO DOS',
             'email' => 'usuario2@cochabamba.bo',
             'email_verified_at' => now(),
-            'password' => Hash::make('admin123'),
-            'role' => 'ADMIN',
+            'password' => Hash::make('secret'),
+            'role' => 'USUARIO',
             'genero' => 'MASCULINO', //FEMENINO
-            'ofice' => 'Departamento de Desarrollo de Sistemas DDSI',
+            'ofice' => 'PROFECIONAL 2',
             'created_at' => now(),
             'updated_at' => now()
         ]);
 
         DB::table('users')->insert([
-            'name' => 'usuario 3',
+            'name' => 'USUARIO TRES',
             'email' => 'usuario3@cochabamba.bo',
             'email_verified_at' => now(),
-            'password' => Hash::make('admin123'),
+            'password' => Hash::make('secret'),
             'role' => 'ADMIN',
             'genero' => 'MASCULINO', //FEMENINO
-            'ofice' => 'Departamento de Desarrollo de Sistemas DDSI',
+            'ofice' => 'PROFECIONAL 3',
             'created_at' => now(),
             'updated_at' => now()
         ]);

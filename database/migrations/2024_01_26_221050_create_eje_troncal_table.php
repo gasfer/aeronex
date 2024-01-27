@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUnidadMedidaTable extends Migration
+class CreateEjeTroncalTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CreateUnidadMedidaTable extends Migration
      */
     public function up()
     {
-        Schema::create('unidad_medida', function (Blueprint $table) {
+        Schema::create('eje_troncal', function (Blueprint $table) {
             $table->id();
-            $table->string('codigo');
-            $table->text('descripcion_unidad_medida');
+            $table->string('nombre_eje_troncal');
+            $table->string('codigo_eje_troncal');
             $table->enum('estado', ['AC', 'DC'])->default('AC');
-            $table->string('id_usuario');
-            $table->date('fecha');
             $table->timestamps();
         });
     }
@@ -31,6 +29,6 @@ class CreateUnidadMedidaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('unidad_medida');
+        Schema::dropIfExists('eje_troncal');
     }
 }

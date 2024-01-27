@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCategoriaTable extends Migration
+class CreateRegistroTipoRegistroTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,14 @@ class CreateCategoriaTable extends Migration
      */
     public function up()
     {
-        Schema::create('categoria', function (Blueprint $table) {
+        Schema::create('registro_tipo_registro', function (Blueprint $table) {
             $table->id();
-            $table->string('codigo');
-            $table->text('nombre_categoria');
-            $table->enum('estado', ['AC', 'DC'])->default('AC');
+            $table->string('nombre_registro');
+            $table->string('codigo_registro');
+            $table->enum('estado', ['AC', 'DC'])->default('AC');  
+           
             $table->timestamps();
         });
-
-
-
     }
 
     /**
@@ -32,6 +30,6 @@ class CreateCategoriaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('categoria');
+        Schema::dropIfExists('registro_tipo_registro');
     }
 }
