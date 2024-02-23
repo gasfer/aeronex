@@ -15,14 +15,14 @@ class CreateEstacionTerminalTable extends Migration
     {
         Schema::create('estacion_terminal', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_eje_troncal')->nullable();            
-
+            // $table->unsignedBigInteger('id_eje_troncal')->nullable();            
             $table->string('nombre_estacion');
             $table->string('codigo_estacion');
             $table->text('descripcion');
+            $table->integer('tipo');
             $table->enum('estado', ['AC', 'DC'])->default('AC');  
             $table->timestamps();
-            $table->foreign('id_eje_troncal')->references('id')->on('eje_troncal');
+            // $table->foreign('id_eje_troncal')->references('id')->on('eje_troncal');
         });
     }
 

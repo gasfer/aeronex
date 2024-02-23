@@ -258,7 +258,7 @@
         <table cellpadding="0" cellspacing="0">
             <tr>
                 <td width="20%">
-                    <img src="{{ public_path('/img/admin/logogamc.png') }}" style="width: 80px; height: 80px">
+                    <img src="{{ public_path('/img/admin/nabol.png') }}" style="width: 80px; height: 80px">
                 </td>
                 <td width="50%" class="txthead">
                     <span class="txthead"><b>GOBIERNO AUTONOMO MUNICIPAL DE COCHABAMBA</b> <br>

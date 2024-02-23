@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Title
@@ -14,8 +13,8 @@ return [
     |
     */
 
-    'title' => 'SEMAFORIZACION', //change title the aplications
-    'title_prefix' => 'ALMACEN |',
+    'title' => 'SIAC-SLCB', //change title the aplications
+    'title_prefix' => 'SIAC - SLCB |',
     'title_postfix' => '',
 
     /*
@@ -45,12 +44,12 @@ return [
     |
     */
 
-    'logo' => 'Sistema de Almacén para Semaforizacíon',
-    'logo_img' => '/img/admin/logogamc.png',
+    'logo' => 'Sistema de Información Aeronáutica Cochabamba - SIAC',
+    'logo_img' => '/img/admin/head_naabol.jpg',
     'logo_img_class' => 'brand-image',
-    'logo_img_xl' => '/img/admin/cocha-logo.png',
+    'logo_img_xl' => '/img/admin/naabol2024.jpg',
     'logo_img_xl_class' => 'brand-image-xs',
-    'logo_img_alt' => 'AlmacenGAMC',
+    'logo_img_alt' => 'SIAC',
 
     /*
     |--------------------------------------------------------------------------
@@ -187,7 +186,6 @@ return [
     |
     */
 
-
     'use_route_url' => false,
     'dashboard_url' => 'profile', // /home
     'logout_url' => 'logout',
@@ -232,19 +230,19 @@ return [
         // ],
 
         [
-            'type'         => 'fullscreen-widget',
+            'type' => 'fullscreen-widget',
             'topnav_right' => true,
         ],
         [
-            'type'         => 'navbar-notification',
-            'id'           => 'my-notification',      // An ID attribute (required).
-            'icon'         => 'fas fa-bell',          // A font awesome icon (required).
-            'icon_color'   => 'warning',              // The initial icon color (optional).
-            'label'        => 0,                      // The initial label for the badge (optional).
-            'label_color'  => 'danger',               // The initial badge color (optional).
-            'url'          => 'notifications/show',   // The url to access all notifications/elements (required).
-            'topnav_right' => true,                   // Or "topnav => true" to place on the left (required).
-            'dropdown_mode'   => true,                // Enables the dropdown mode (optional).
+            'type' => 'navbar-notification',
+            'id' => 'my-notification', // An ID attribute (required).
+            'icon' => 'fas fa-bell', // A font awesome icon (required).
+            'icon_color' => 'warning', // The initial icon color (optional).
+            'label' => 0, // The initial label for the badge (optional).
+            'label_color' => 'danger', // The initial badge color (optional).
+            'url' => 'notifications/show', // The url to access all notifications/elements (required).
+            'topnav_right' => true, // Or "topnav => true" to place on the left (required).
+            'dropdown_mode' => true, // Enables the dropdown mode (optional).
             'dropdown_flabel' => 'Ver Notificaciones', // The label for the dropdown footer link (optional).
             // 'update_cfg'   => [
             //     'url' => 'notifications/get',         // The url to periodically fetch new data (optional).
@@ -259,28 +257,28 @@ return [
         ],
         [
             'text' => 'Menu Principal',
-            'url'  => 'home',
+            'url' => 'home',
             'icon_color' => 'cyan',
-            'icon'        => ' fas fa-fw fa-home ',
+            'icon' => ' fas fa-fw fa-home ',
             // 'can'  => 'manage-blog',
         ],
         [
-            'text'    => 'Configuración',
-            'icon'    => ' fas fa-fw fa-tools',
+            'text' => 'Configuración',
+            'icon' => ' fas fa-fw fa-tools',
             'icon_color' => 'cyan',
             'submenu' => [
                 [
                     'text' => 'Usuarios',
-                    'url'  => '#',
+                    'url' => '#',
                     'icon_color' => 'cyan',
-                    'icon'        => ' fas fa-fw fa-check',
+                    'icon' => ' fas fa-fw fa-check',
                 ],
-                [
-                    'text' => 'Responsable',
-                    'url'  => 'responsable/index',
-                    'icon_color' => 'cyan',
-                    'icon'        => ' fas fa-fw fa-check',
-                ],
+                // [
+                //     'text' => 'Responsable',
+                //     'url'  => 'responsable/index',
+                //     'icon_color' => 'cyan',
+                //     'icon'        => ' fas fa-fw fa-check',
+                // ],
                 // [
                 //     'text' => 'Personal',
                 //     'url'  => '#',
@@ -293,24 +291,24 @@ return [
                 //     'icon_color' => 'cyan',
                 //     'icon'        => ' fas fa-fw fa-check',
                 // ],
-                [
-                    'text' => 'Ítem',
-                    'url'  => 'catalogo.index',
-                    'icon_color' => 'cyan',
-                    'icon'        => ' fas fa-fw fa-check',
-                ],
-                [
-                    'text' => 'Unidad Medida',
-                    'url'  => '#',
-                    'icon_color' => 'cyan',
-                    'icon'        => ' fas fa-fw fa-check',
-                ],
-                [
-                    'text' => 'Categoria',
-                    'url'  => '#',
-                    'icon_color' => 'cyan',
-                    'icon'        => ' fas fa-fw fa-check',
-                ],
+                // [
+                //     'text' => 'Ítem',
+                //     'url'  => 'catalogo.index',
+                //     'icon_color' => 'cyan',
+                //     'icon'        => ' fas fa-fw fa-check',
+                // ],
+                // [
+                //     'text' => 'Unidad Medida',
+                //     'url'  => '#',
+                //     'icon_color' => 'cyan',
+                //     'icon'        => ' fas fa-fw fa-check',
+                // ],
+                // [
+                //     'text' => 'Categoria',
+                //     'url'  => '#',
+                //     'icon_color' => 'cyan',
+                //     'icon'        => ' fas fa-fw fa-check',
+                // ],
                 // [
                 //     'text' => 'Proveedor',
                 //     'url'  => '#',
@@ -320,31 +318,73 @@ return [
             ],
         ],
         [
-            'text' => 'Ingreso Ítem',
-            'url'  => 'ingreso',
+            'text' => 'METAR',
+            'url' => 'metar',
             'icon_color' => 'cyan',
-            'icon'        => ' fas fa-fw fa-download',
+            'icon' => ' fas fa-fw fa-download',
             // 'can'  => 'manage-blog',
         ],
         [
-            'text' => 'Salida Ítem',
-            'url'  => 'egreso',
+            'text' => 'SINOPTICO',
+            'url' => 'egreso',
             'icon_color' => 'cyan',
-            'icon'        => ' fas fa-fw fa-upload',
+            'icon' => ' fas fa-fw fa-upload',
             // 'can'  => 'manage-blog',
         ],
         [
-            'text'        => 'Reportes',
-            'url'         => 'reporte',
+            'text' => 'TAF',
+            'url' => 'reporte',
             'icon_color' => 'cyan',
-            'icon'        => ' fas fa-fw fa-file',
+            'icon' => ' fas fa-fw fa-download',
+
             // 'label'       => 2,
             // 'label_color' => 'success',
         ],
+        [
+            'text' => 'SPECI',
+            'url' => 'reporte',
+            'icon_color' => 'cyan',
+            'icon' => ' fas fa-fw fa-download',
 
+            // 'label'       => 2,
+            // 'label_color' => 'success',
+        ],
+        [
+            'text' => 'GAMET',
+            'url' => 'reporte',
+            'icon_color' => 'cyan',
+            'icon' => ' fas fa-fw fa-download',
 
+            // 'label'       => 2,
+            // 'label_color' => 'success',
+        ],
+        [
+            'text' => 'WINDY',
+            'url' => 'reporte',
+            'icon_color' => 'cyan',
+            'icon' => ' fas fa-fw fa-download',
 
+            // 'label'       => 2,
+            // 'label_color' => 'success',
+        ],
+        [
+            'text' => 'MOV',
+            'url' => 'reporte',
+            'icon_color' => 'cyan',
+            'icon' => ' fas fa-fw fa-download',
 
+            // 'label'       => 2,
+            // 'label_color' => 'success',
+        ],
+        [
+            'text' => 'MOTAM',
+            'url' => 'reporte',
+            'icon_color' => 'cyan',
+            'icon' => ' fas fa-fw fa-download',
+
+            // 'label'       => 2,
+            // 'label_color' => 'success',
+        ],
     ],
 
     /*
@@ -359,15 +399,7 @@ return [
     |
     */
 
-    'filters' => [
-        JeroenNoten\LaravelAdminLte\Menu\Filters\GateFilter::class,
-        JeroenNoten\LaravelAdminLte\Menu\Filters\HrefFilter::class,
-        JeroenNoten\LaravelAdminLte\Menu\Filters\SearchFilter::class,
-        JeroenNoten\LaravelAdminLte\Menu\Filters\ActiveFilter::class,
-        JeroenNoten\LaravelAdminLte\Menu\Filters\ClassesFilter::class,
-        JeroenNoten\LaravelAdminLte\Menu\Filters\LangFilter::class,
-        JeroenNoten\LaravelAdminLte\Menu\Filters\DataFilter::class,
-    ],
+    'filters' => [JeroenNoten\LaravelAdminLte\Menu\Filters\GateFilter::class, JeroenNoten\LaravelAdminLte\Menu\Filters\HrefFilter::class, JeroenNoten\LaravelAdminLte\Menu\Filters\SearchFilter::class, JeroenNoten\LaravelAdminLte\Menu\Filters\ActiveFilter::class, JeroenNoten\LaravelAdminLte\Menu\Filters\ClassesFilter::class, JeroenNoten\LaravelAdminLte\Menu\Filters\LangFilter::class, JeroenNoten\LaravelAdminLte\Menu\Filters\DataFilter::class],
 
     /*
     |--------------------------------------------------------------------------
@@ -380,7 +412,6 @@ return [
     | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Plugins-Configuration
     |
     */
-
 
     'plugins' => [
         'Datatables' => [
@@ -415,11 +446,13 @@ return [
                     'type' => 'js',
                     'asset' => false,
                     'location' => '/libreries/datatable/js/dataTables.dateTime.min.js',
-                ], [
+                ],
+                [
                     'type' => 'js',
                     'asset' => false,
                     'location' => '/libreries/datatable/js/moment.min.js',
-                ], [
+                ],
+                [
                     'type' => 'css',
                     'asset' => false,
                     'location' => '/libreries/datatable/css/dataTables.dateTime.min.css',
@@ -432,14 +465,14 @@ return [
                 [
                     'type' => 'css',
                     'asset' => false,
-                    'location' => '/libreries/dropzone/css/dropzone.css'
+                    'location' => '/libreries/dropzone/css/dropzone.css',
                 ],
                 [
                     'type' => 'js',
                     'asset' => false,
-                    'location' => '/libreries/dropzone/js/dropzone-min.js'
+                    'location' => '/libreries/dropzone/js/dropzone-min.js',
                 ],
-            ]
+            ],
         ],
         'Animation' => [
             'active' => false,
@@ -504,7 +537,6 @@ return [
         'leaflet' => [
             'active' => false,
             'files' => [
-
                 [
                     'type' => 'css',
                     'asset' => false,

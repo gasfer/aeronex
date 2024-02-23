@@ -13,11 +13,12 @@
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1 class="m-0">LISTA DE INGRESOS DE ITEMS</h1>
+                <div class="col-lg-12">
+                    <h1 > SISTEMA DE INFORMACIÓN AERONÁUTICA DE COMUNICACIONES - SLCB  
+                        </h1>
                 </div><!-- /.col -->
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
+                <div class="col-lg-12">
+                    <ol class="breadcrumb float-sm-left">
                         <li class="breadcrumb-item"><a href="{{ route('home') }}">Principal</a></li>
                     </ol>
                 </div><!-- /.col -->
@@ -32,8 +33,8 @@
             <div class="info-box">
                 <span class="info-box-icon bg-info"><i class="fas fa-download"></i></span>
                 <div class="info-box-content">
-                    <span class="info-box-text">Total ingreso</span>
-                    <span class="info-box-number">{{ $ingresos ?? '0' }}<small> Registros</small></span>
+                    <span class="info-box-text">METAR</span>
+                    <span class="info-box-number">{{ $metars ?? '0' }}<small> Registros</small></span>
                 </div>
             </div>
 
@@ -43,7 +44,7 @@
             <div class="info-box">
                 <span class="info-box-icon bg-red"><i class="fas fa-upload"></i></span>
                 <div class="info-box-content">
-                    <span class="info-box-text">Total salida</span>
+                    <span class="info-box-text">SINOPTICO</span>
                     <span class="info-box-number">{{ $salidas ?? '0' }}<small> Registros</small></span>
                 </div>
             </div>
@@ -55,7 +56,7 @@
             <div class="info-box">
                 <span class="info-box-icon bg-green"><i class="fas fa-box "></i></span>
                 <div class="info-box-content">
-                    <span class="info-box-text">Total ítems</span>{{  $items ?? '0'  }}<small></small>
+                    <span class="info-box-text">SPECI</span>{{  $items ?? '0'  }}<small></small>
                 </div>
             </div>
         </div>
@@ -64,7 +65,7 @@
             <div class="info-box">
                 <span class="info-box-icon bg-yellow"><i class="fas fa-chart-bar"></i></span>
                 <div class="info-box-content">
-                    <span class="info-box-text">Reingresos</span>
+                    <span class="info-box-text">GAMET</span>
                     <span class="info-box-number">{{$reingreso ?? '0'}}</span>
                 </div>
             </div>

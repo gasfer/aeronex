@@ -20,9 +20,11 @@ Route::group(['middleware' => ['auth']], function () {
     //configuracion
     Route::get('/profile', 'App\Http\Controllers\User\UserController@profileUser')->name('profile');
 
-    //ingreso item
-    Route::get('/ingreso', 'App\Http\Controllers\Ingreso\IngresoController@index')->name('ingreso');
-    Route::get('/ingreso-create', 'App\Http\Controllers\Ingreso\IngresoController@create')->name('ingreso.create');
+    //Registro Metar
+    Route::get('/metar', 'App\Http\Controllers\Metar\MetarController@index')->name('metar');
+    Route::get('/metar-create', 'App\Http\Controllers\Metar\MetarController@create')->name('metar.create');
+
+
 
     Route::any('ingreso.catalogotemp', 'App\Http\Controllers\Ingreso\IngresoController@catalogotemp')->name('ingreso.catalogotemp');
 
