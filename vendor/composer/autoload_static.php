@@ -233,10 +233,10 @@ class ComposerStaticInit8bbe5590af81e012197be6b4d3f3eda4
         'Yajra\\DataTables\\' => 
         array (
             0 => __DIR__ . '/..' . '/yajra/laravel-datatables-buttons/src',
-            1 => __DIR__ . '/..' . '/yajra/laravel-datatables-fractal/src',
-            2 => __DIR__ . '/..' . '/yajra/laravel-datatables-html/src',
-            3 => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src',
-            4 => __DIR__ . '/..' . '/yajra/laravel-datatables-editor/src',
+            1 => __DIR__ . '/..' . '/yajra/laravel-datatables-editor/src',
+            2 => __DIR__ . '/..' . '/yajra/laravel-datatables-fractal/src',
+            3 => __DIR__ . '/..' . '/yajra/laravel-datatables-html/src',
+            4 => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src',
         ),
         'Whoops\\' => 
         array (
@@ -396,8 +396,8 @@ class ComposerStaticInit8bbe5590af81e012197be6b4d3f3eda4
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
-            1 => __DIR__ . '/..' . '/psr/http-factory/src',
+            0 => __DIR__ . '/..' . '/psr/http-factory/src',
+            1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -681,6 +681,8 @@ class ComposerStaticInit8bbe5590af81e012197be6b4d3f3eda4
         'App\\Http\\Controllers\\Reportes\\ReporteController' => __DIR__ . '/../..' . '/app/Http/Controllers/Reportes/ReporteController.php',
         'App\\Http\\Controllers\\Responsable\\ResponsableController' => __DIR__ . '/../..' . '/app/Http/Controllers/Responsable/ResponsableController.php',
         'App\\Http\\Controllers\\User\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/User/UserController.php',
+        'App\\Http\\Controllers\\metar\\MetarController' => __DIR__ . '/../..' . '/app/Http/Controllers/metar/MetarController.php',
+        'App\\Http\\Controllers\\sinoptico\\SinopticoController' => __DIR__ . '/../..' . '/app/Http/Controllers/sinoptico/SinopticoController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
@@ -691,17 +693,12 @@ class ComposerStaticInit8bbe5590af81e012197be6b4d3f3eda4
         'App\\Http\\Middleware\\TrustHosts' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustHosts.php',
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
-        'App\\Models\\CatalogoModels' => __DIR__ . '/../..' . '/app/Models/CatalogoModels.php',
-        'App\\Models\\CategoriaModels' => __DIR__ . '/../..' . '/app/Models/CategoriaModels.php',
-        'App\\Models\\DetalleIngresoItemTemp' => __DIR__ . '/../..' . '/app/Models/DetalleIngresoItemTemp.php',
-        'App\\Models\\DetalleIngresoModels' => __DIR__ . '/../..' . '/app/Models/DetalleIngresoModels.php',
-        'App\\Models\\DetalleSalidaItemTemp' => __DIR__ . '/../..' . '/app/Models/DetalleSalidaItemTemp.php',
-        'App\\Models\\DetalleSalidaModels' => __DIR__ . '/../..' . '/app/Models/DetalleSalidaModels.php',
+        'App\\Models\\EstacionTerminalModels' => __DIR__ . '/../..' . '/app/Models/EstacionTerminalModels.php',
         'App\\Models\\Funcionario' => __DIR__ . '/../..' . '/app/Models/Funcionario.php',
-        'App\\Models\\IngresoModels' => __DIR__ . '/../..' . '/app/Models/IngresoModels.php',
+        'App\\Models\\RecepcionRegistroModels' => __DIR__ . '/../..' . '/app/Models/RecepcionRegistroModels.php',
         'App\\Models\\Responsable' => __DIR__ . '/../..' . '/app/Models/Responsable.php',
         'App\\Models\\SalidaModels' => __DIR__ . '/../..' . '/app/Models/SalidaModels.php',
-        'App\\Models\\UnidadMedidaModels' => __DIR__ . '/../..' . '/app/Models/UnidadMedidaModels.php',
+        'App\\Models\\TipoRegistroModels' => __DIR__ . '/../..' . '/app/Models/TipoRegistroModels.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',

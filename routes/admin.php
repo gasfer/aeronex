@@ -22,7 +22,14 @@ Route::group(['middleware' => ['auth']], function () {
 
     //Registro Metar
     Route::get('/metar', 'App\Http\Controllers\Metar\MetarController@index')->name('metar');
-    Route::get('/metar-create', 'App\Http\Controllers\Metar\MetarController@create')->name('metar.create');
+    Route::post('/metar-create', 'App\Http\Controllers\Metar\MetarController@storeMetar')->name('metar.create');
+    Route::post('/metar-delete', 'App\Http\Controllers\Metar\MetarController@deleteMetar')->name('metar.delete');
+
+
+    Route::get('/sinoptico', 'App\Http\Controllers\sinoptico\sinopticoController@index')->name('sinoptico');
+    Route::get('/sinoptico-create', 'App\Http\Controllers\sinoptico\sinopticoController@create')->name('sinoptico.create');
+
+
 
 
 

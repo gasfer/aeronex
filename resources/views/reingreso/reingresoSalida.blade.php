@@ -458,10 +458,10 @@
         });
 
 
-        $(document).on('click', '#add_item_egreso', function() {
-            limpiarModalItem();
-            $("#modal_add_item_egreso").modal("show");
-        });
+        // $(document).on('click', '#add_item_egreso', function() {
+        //     limpiarModalItem();
+        //     $("#modal_add_item_egreso").modal("show");
+        // });
 
 
         function completarCatalgo() {

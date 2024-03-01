@@ -37,7 +37,7 @@ class CatalogoController extends Controller
 
         //       var_dump($list_catalogo);die;
         $Name = Auth::user()->name;
-        return view('admin.catalogo.index', [
+        return view('metar.index', [
 
             'UnidadMedidas' => $UnidadMedidas,
             'categoria' => $categoria,

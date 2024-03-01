@@ -117,7 +117,7 @@
     <script type="text/javascript">
         $('#date_start').val('');
         $('#date_end').val('');
-        var datatable = $('#reportes-data').DataTable({
+        /*var datatable = $('#reportes-data').DataTable({
             "paging": true,
             "searching": true,
             "responsive": true,
@@ -127,7 +127,7 @@
             },
             "autoWidth": false,
             // "serverSide": true
-        });
+        });*/
         var minDate = '';
         var maxDate = '';
 

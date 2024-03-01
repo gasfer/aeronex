@@ -13,8 +13,8 @@ return [
     |
     */
 
-    'title' => 'SIAC-SLCB', //change title the aplications
-    'title_prefix' => 'SIAC - SLCB |',
+    'title' => 'CEMENTERIO GAMC', //change title the aplications
+    'title_prefix' => '',
     'title_postfix' => '',
 
     /*
@@ -43,13 +43,13 @@ return [
     | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Basic-Configuration
     |
     */
-
-    'logo' => 'Sistema de Información Aeronáutica Cochabamba - SIAC',
-    'logo_img' => '/img/admin/head_naabol.jpg',
+    
+    'logo' => '',
+    'logo_img' => '/img/admin/cbba.png',
     'logo_img_class' => 'brand-image',
-    'logo_img_xl' => '/img/admin/naabol2024.jpg',
+    'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
-    'logo_img_alt' => 'SIAC',
+    'logo_img_alt' => 'AdminLTE',
 
     /*
     |--------------------------------------------------------------------------
@@ -65,7 +65,7 @@ return [
 
     'usermenu_enabled' => true,
     'usermenu_header' => true,
-    'usermenu_header_class' => 'bg-secondary bg-gradient',
+    'usermenu_header_class' => 'bg-primary bg-gradient',
     'usermenu_image' => true, //show image user
     'usermenu_desc' => true, //show text role user
     'usermenu_profile_url' => true, //show user profile view
@@ -82,10 +82,10 @@ return [
     |
     */
 
-    'layout_topnav' => false,
+    'layout_topnav' => null,
     'layout_boxed' => null,
     'layout_fixed_sidebar' => true,
-    'layout_fixed_navbar' => true,
+    'layout_fixed_navbar' => false,
     'layout_fixed_footer' => null,
     'layout_dark_mode' => false, //change mode themer
 
@@ -101,9 +101,9 @@ return [
     |
     */
 
-    'classes_auth_card' => 'card-outline card-warning',
+    'classes_auth_card' => 'bg-gradient-default bg-primary ',
     'classes_auth_header' => '',
-    'classes_auth_body' => 'bg-gradient-light',
+    'classes_auth_body' => 'bg-gradient bg-secondary',
     'classes_auth_footer' => 'text-center',
     'classes_auth_icon' => 'fa-fw text-light',
     'classes_auth_btn' => 'btn-flat btn-light',
@@ -121,15 +121,15 @@ return [
     */
 
     'classes_body' => '',
-    'classes_brand' => 'bg-info', //change color the icon
+    'classes_brand' => '', //change color the icon
     'classes_brand_text' => '', //change color text
     'classes_content_wrapper' => '', //change color body
-    'classes_content_header' => 'bg-white',
+    'classes_content_header' => '',
     'classes_content' => '',
-    'classes_sidebar' => 'sidebar-dark-info elevation-4',
+    'classes_sidebar' => 'sidebar-dark-primary elevation-4',
     'classes_sidebar_nav' => '',
-    'classes_topnav' => 'navbar-info navbar-light',
-    'classes_topnav_nav' => 'navbar-expand',
+    'classes_topnav' => 'navbar-info navbar-dark',
+    'classes_topnav_nav' => 'navbar-expand ',
     'classes_topnav_container' => 'container',
 
     /*
@@ -144,6 +144,7 @@ return [
     |
     */
 
+ 
     'sidebar_mini' => 'lg',
     'sidebar_collapse' => false,
     'sidebar_collapse_auto_size' => false,
@@ -166,6 +167,7 @@ return [
     |
     */
 
+   
     'right_sidebar' => false,
     'right_sidebar_icon' => 'fas fa-cogs',
     'right_sidebar_theme' => 'dark',
@@ -186,14 +188,14 @@ return [
     |
     */
 
-    'use_route_url' => false,
-    'dashboard_url' => 'profile', // /home
-    'logout_url' => 'logout',
-    'login_url' => 'login',
-    'register_url' => 'register/home',
-    'password_reset_url' => 'password/reset',
-    'password_email_url' => 'password/email',
-    'profile_url' => true,
+    'right_sidebar' => false,
+    'right_sidebar_icon' => 'fas fa-cogs',
+    'right_sidebar_theme' => 'dark',
+    'right_sidebar_slide' => true,
+    'right_sidebar_push' => true,
+    'right_sidebar_scrollbar_theme' => 'os-theme-light',
+    'right_sidebar_scrollbar_auto_hide' => 'l',
+
     /*
     |--------------------------------------------------------------------------
     | Laravel Mix
@@ -212,7 +214,8 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Menu Itemsºººººº
+    | Menu Items
+    |--------------------------------------------------------------------------
     |
     | Here we can modify the sidebar/top navigation of the admin panel.
     |
@@ -230,24 +233,25 @@ return [
         // ],
 
         [
-            'type' => 'fullscreen-widget',
+            'type'         => 'fullscreen-widget',
             'topnav_right' => true,
         ],
         [
-            'type' => 'navbar-notification',
-            'id' => 'my-notification', // An ID attribute (required).
-            'icon' => 'fas fa-bell', // A font awesome icon (required).
-            'icon_color' => 'warning', // The initial icon color (optional).
-            'label' => 0, // The initial label for the badge (optional).
-            'label_color' => 'danger', // The initial badge color (optional).
-            'url' => 'notifications/show', // The url to access all notifications/elements (required).
-            'topnav_right' => true, // Or "topnav => true" to place on the left (required).
-            'dropdown_mode' => true, // Enables the dropdown mode (optional).
+            'type'         => 'navbar-notification',
+            'id'           => 'my-notification',      // An ID attribute (required).
+            'icon'         => 'fas fa-bell',          // A font awesome icon (required).
+            'icon_color'   => 'warning',              // The initial icon color (optional).
+            'label'        => 0,                      // The initial label for the badge (optional).
+            'label_color'  => 'danger',               // The initial badge color (optional).
+            'url'          => 'notifications/show',   // The url to access all notifications/elements (required).
+            'topnav_right' => true,                   // Or "topnav => true" to place on the left (required).
+            'dropdown_mode'   => true,                // Enables the dropdown mode (optional).
             'dropdown_flabel' => 'Ver Notificaciones', // The label for the dropdown footer link (optional).
             // 'update_cfg'   => [
             //     'url' => 'notifications/get',         // The url to periodically fetch new data (optional).
             //     'period' => 30,                       // The update period for get new data (in seconds, optional).
             // ],
+           
         ],
 
         // Sidebar items:
@@ -326,7 +330,7 @@ return [
         ],
         [
             'text' => 'SINOPTICO',
-            'url' => 'egreso',
+            'url' => 'sinoptico',
             'icon_color' => 'cyan',
             'icon' => ' fas fa-fw fa-upload',
             // 'can'  => 'manage-blog',
@@ -399,7 +403,15 @@ return [
     |
     */
 
-    'filters' => [JeroenNoten\LaravelAdminLte\Menu\Filters\GateFilter::class, JeroenNoten\LaravelAdminLte\Menu\Filters\HrefFilter::class, JeroenNoten\LaravelAdminLte\Menu\Filters\SearchFilter::class, JeroenNoten\LaravelAdminLte\Menu\Filters\ActiveFilter::class, JeroenNoten\LaravelAdminLte\Menu\Filters\ClassesFilter::class, JeroenNoten\LaravelAdminLte\Menu\Filters\LangFilter::class, JeroenNoten\LaravelAdminLte\Menu\Filters\DataFilter::class],
+    'filters' => [
+        JeroenNoten\LaravelAdminLte\Menu\Filters\GateFilter::class,
+        JeroenNoten\LaravelAdminLte\Menu\Filters\HrefFilter::class,
+        JeroenNoten\LaravelAdminLte\Menu\Filters\SearchFilter::class,
+        JeroenNoten\LaravelAdminLte\Menu\Filters\ActiveFilter::class,
+        JeroenNoten\LaravelAdminLte\Menu\Filters\ClassesFilter::class,
+        JeroenNoten\LaravelAdminLte\Menu\Filters\LangFilter::class,
+        JeroenNoten\LaravelAdminLte\Menu\Filters\DataFilter::class,
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -465,14 +477,14 @@ return [
                 [
                     'type' => 'css',
                     'asset' => false,
-                    'location' => '/libreries/dropzone/css/dropzone.css',
+                    'location' => '/libreries/dropzone/css/dropzone.css'
                 ],
                 [
                     'type' => 'js',
                     'asset' => false,
-                    'location' => '/libreries/dropzone/js/dropzone-min.js',
+                    'location' => '/libreries/dropzone/js/dropzone-min.js'
                 ],
-            ],
+            ]
         ],
         'Animation' => [
             'active' => false,
@@ -532,8 +544,15 @@ return [
                     'asset' => false,
                     'location' => '/libreries/toastr/css/toastr.min.css',
                 ],
+                //   [
+                //     'type' => 'js',
+                //     'asset' => false,
+                //     'location' => '/libreries/jquery/js/jquery.min.js',
+                // ],
+
             ],
         ],
+
         'leaflet' => [
             'active' => false,
             'files' => [
