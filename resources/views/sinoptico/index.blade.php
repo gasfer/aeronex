@@ -32,9 +32,11 @@
             <div class="row">
 
                 <div class="col-4">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-add-sinoptico">
-                        Nuevo Sinoptico
-                    </button>
+              
+                    <div class="col-4">
+                        <button id="new-metar" type="button" class="btn btn-info">
+                            <i class="fas fa-plus-circle text-white fa-2x"></i> Nuevo Registro</button>
+                    </div>
                 </div>
                 <div class="col-4">
                     <div class="input-group mb-3">
@@ -106,62 +108,14 @@
         </div>
     </div>
 
-    <!-- Modal complementacion de entrega de producto -->
-    <div class="modal fade fullscreen-modal animated bounceIn" id="modal-add-sinoptico" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <form action="" method="post">
-        <div class="modal-dialog modal-sm" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3 class="modal-title" style="text-align: center">Formulario de registro</h3>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-
-                    <div class="card">
-                        <div class="card-body">
-
-                            <div class="row">
-                                <div class="col-sm-12 col-12">
-                                    <div class="form-group">
-                                        <label>Fecha de Registro :</label>
-                                        <input type="date" class="form-control" placeholder="fecha de registro"
-                                            id="fecha_registro">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-12 col-12">
-                                    <div class="form-group">
-                                        <label>Mensaje:</label>
-                                        <textarea style="text-transform:uppercase;"class="form-control" name="msg" id="msg" cols="30"
-                                            rows="4" autocomplete="off" onkeyup="javascript:this.value=this.value.toUpperCase();"></textarea>
-
-                                    </div>
-                                </div>
-                            </div>
 
 
 
-                        </div>
-                    </div>
-
-                </div>
-                <div class="modal-footer">
-                    <div class="col-sm-12" style="text-align: center">
-                        <button type="button" 
-                            class="btn btn-success">Registrar</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </form>
-    </div>
-
-
+    @include('metar.modalRegister', [
+        'id_button' => 'btn_guardar_metar',
+        'title_buton' => 'Guardar Registro',
+        'title_modal' => 'Nuevo Registro Metar',
+    ])
 
 @stop
 
@@ -191,7 +145,28 @@
 @stop
 
 @section('js')
+<script>
+    $(document).ready(function() {
+        $(function() {
+            $('.numeroEntero').keypress(function(e) {
+                    if (isNaN(this.value + String.fromCharCode(e.charCode)))
+                        return false;
+                })
+                .on("cut copy paste", function(e) {
+                    e.preventDefault();
+                });
+        });
+        $(function() {
+            $('.soloLetras').bind('keyup input', function() {
+                if (this.value.match(/[^a-zA-Z áéíóúÁÉÍÓÚüÜ]/g)) {
+                    this.value = this.value.replace(/[^a-zA-Z áéíóúÁÉÍÓÚüÜ]/g, '');
+                }
+            });
+        });
 
+
+    });
+</script>
     <script type="text/javascript" charset="utf-8">
         //select2 cuartel
         $("#select_id_catalogo_Modal").select2({

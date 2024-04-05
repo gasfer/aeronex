@@ -26,8 +26,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/metar-delete', 'App\Http\Controllers\Metar\MetarController@deleteMetar')->name('metar.delete');
 
 
-    Route::get('/sinoptico', 'App\Http\Controllers\sinoptico\sinopticoController@index')->name('sinoptico');
-    Route::get('/sinoptico-create', 'App\Http\Controllers\sinoptico\sinopticoController@create')->name('sinoptico.create');
+    Route::get('/sinoptico', 'App\Http\Controllers\sinoptico\SinopticoController@index')->name('sinoptico');
+    Route::get('/sinoptico-create', 'App\Http\Controllers\sinoptico\SinopticoController@create')->name('sinoptico.create');
 
 
 

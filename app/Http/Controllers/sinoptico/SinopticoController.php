@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\RecepcionRegistroModels;
 use App\Models\EstacionTerminalModels;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 
 
@@ -19,9 +20,17 @@ class SinopticoController extends Controller
 
     public function index()
     {
-        $sinopticos = RecepcionRegistroModels::all();
+        $sinopticos= RecepcionRegistroModels::select('recepcion_registro.*',  DB::raw('CONCAT(estacion_terminal.codigo_estacion , \' - \',estacion_terminal.nombre_estacion) AS estacion_terminal'))
+        ->Join('estacion_terminal', 'estacion_terminal.id', '=', 'recepcion_registro.id_estacion_terminal')
+        ->orderBy('id', 'DESC')
+         ->get();
+
+        $estacion_terminal = EstacionTerminalModels::select("estacion_terminal.id",
+        DB::raw("CONCAT(estacion_terminal.codigo_estacion,' -  ',estacion_terminal.nombre_estacion) as estacion_terminal"))->get();
+
         return view('sinoptico.index', [
             'sinopticos'  => $sinopticos,
+            'estacion_terminal'  => $estacion_terminal,
         ]);
     }
     public function create()

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\metar;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\RecepcionRegistroModels;
+use App\Models\TipoRegistroModels;
 use App\Models\EstacionTerminalModels;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -62,11 +63,15 @@ class MetarController extends Controller
             $new_metar =  RecepcionRegistroModels::create([
                 'id_estacion_terminal' => $request->estacion_terminal,
                 'id_usuario' =>  auth()->id(),
-                'tipo_registro' => 1, //metar
+                'id_tipo_registro' => 1, //metar
                 'nombre_registro' => 'ninguna',
                 'fecha_recepcionado' => trim($request->fecha_registro),
                 'mensaje' => trim($request->mensaje),
             ]);
+
+          //  $id_metar =  (int)$new_metar->id;
+
+
             $metars = RecepcionRegistroModels::all();
             $estacion_terminal = EstacionTerminalModels::select("estacion_terminal.id",
             DB::raw("CONCAT(estacion_terminal.codigo_estacion,' -  ',estacion_terminal.nombre_estacion) as estacion_terminal"))->get();

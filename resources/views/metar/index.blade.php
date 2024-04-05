@@ -2,7 +2,6 @@
 @section('title', 'Ingreso')
 @section('plugins.Animation', true)
 @section('plugins.Toastr', true)
-@section('plugins.Pace', true)
 @section('plugins.Sweetalert2', true)
 @section('plugins.Datatables', true)
 @section('plugins.Select2', true)
