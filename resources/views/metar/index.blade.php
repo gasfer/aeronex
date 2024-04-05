@@ -85,14 +85,10 @@
                                 {{-- <a  href="{{ route('ingreso.edit'}}" class="btn btn-info"value="{{ $metar->id }}" id="btn-editar"
                                     title="Editar Ingreso"><i class="fas fa-edit"></i> </a> --}}
                                 <button type="button" class="btn btn-info" onclick="eliminarMetar({{ $metar->id }})"
-                                    title="Editar Ingreso"><i class="fas fa-trash"></i></button>
-
-
+                                    title="Eliminar Registro"><i class="fas fa-trash"></i></button>
                             </td>
                         </tr>
                     @endforeach
-
-
                 </tbody>
             </table>
         </div>
@@ -220,36 +216,48 @@
                     event.preventDefault();
                 }
                 Swal.fire({
-                title: "Eliminado!",
-                text: "Suregistro fue eliminado.",
-                icon: "success"
+                    title: "Eliminado!",
+                    text: "Suregistro fue eliminado.",
+                    icon: "success"
+                });
+                location.reload();
             });
-            location.reload();
-            });
-          
+
 
 
         }
-
-
-
 
 
         $(document).ready(function() {
             $("#fecha_registro").datetimepicker({
                 language: 'es',
                 startDate: new Date(),
-                format: "d-m-Y H:m:s", // Solo se ocupa la fecha
-                yearRange: "-99:+0", // no hace nada
-                maxDate: "+0m +0d", // no hace nada
-                //format: "YYYY-MM-DD HH:mm:ss", // no se requiere la hora
+                format: "Y-m-d H:m:s", // Solo se ocupa la fecha
+               
+                //format: "Y-m-d HH:mm:ss", // no se requiere la hora
                 timepicker: false,
                 autoclose: true,
                 //pickTime: false
                 showButtonPanel: true,
             });
+            // Create date inputs
+            minDate = new DateTime($('#date_start'), {
+                format: 'Y-m-d',
+                locale: 'es',
+            });
+            maxDate = new DateTime($('#date_end'), {
+                format: 'Y-m-d',
+                locale: 'es',
 
+            });
 
+            // DataTables initialisation
+            var table = $('#ingreso-data').DataTable();
+
+            // Refilter the table
+            $('#date_start, #date_end').on('change', function() {
+                table.draw();
+            });
 
         });
     </script>

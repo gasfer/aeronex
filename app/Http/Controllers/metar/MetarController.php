@@ -24,6 +24,7 @@ class MetarController extends Controller
 
         $metars= RecepcionRegistroModels::select('recepcion_registro.*',  DB::raw('CONCAT(estacion_terminal.codigo_estacion , \' - \',estacion_terminal.nombre_estacion) AS estacion_terminal'))
         ->leftJoin('estacion_terminal', 'estacion_terminal.id', '=', 'recepcion_registro.id_estacion_terminal')
+        ->where('id_tipo_registro', 1) // metar = 1
         ->orderBy('id', 'DESC')
          ->get();
 

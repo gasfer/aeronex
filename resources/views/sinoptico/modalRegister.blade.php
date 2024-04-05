@@ -1,7 +1,7 @@
 <!-- Modal complementacion de entrega de producto -->
-<div class="modal fade fullscreen-modal animated bounceIn" id="modal-register-metar" data-backdrop="static" tabindex="-1"
+<div class="modal fade fullscreen-modal animated bounceIn" id="modal_add_sinoptico" data-backdrop="static" tabindex="-1"
     role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-md" role="document">
+    <div class="modal-dialog modal-sm" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h3 class="modal-title" style="text-align: center">{{ $title_modal }}</h3>

@@ -32,9 +32,9 @@
             <div class="row">
 
                 <div class="col-4">
-              
-                    <div class="col-4">
-                        <button id="new-metar" type="button" class="btn btn-info">
+
+                    <div>
+                        <button id="add_sinoptico" type="button" class="btn btn-info">
                             <i class="fas fa-plus-circle text-white fa-2x"></i> Nuevo Registro</button>
                     </div>
                 </div>
@@ -76,28 +76,22 @@
                 <tbody>
                     @php($count = 1)
 
-                    @foreach ($sinopticos as $sinop)
+                    @foreach ($sinopticos as $Sinoptico)
                         <tr>
                             <td scope="row">{{ $count++ }}</td>
-                            <td>{{ $sinop->nro_ingreso }}</td>
-                            <td>{{ $sinop->nro_egreso }}</td>
-                            <td>Almacen - {{ $sinop->almacen }}</td>
-                            <td>{{ $sinop->created_at }}</td>
-                            <td>{{ $sinop->funcionario }}</td>
+                            <td>{{ $Sinoptico->estacion_terminal }}</td>
+                            <td>{{ $Sinoptico->fecha_recepcionado }}</td>
+                            <td>{{ $Sinoptico->mensaje }}</td>
+                            <td>{{ $Sinoptico->id_user }}</td>
                             <td>
-                                {{-- <button type="button" class="btn btn-info" value="{{ $sinop->id }}"
+                                {{-- <button type="button" class="btn btn-info" value="{{ $Sinoptico->id }}"
                                     id="btn_edit_ingreso" title="Editar Ingreso"><i class="fas fa-edit"></i></button> --}}
-                                {{-- <a  href="{{ route('ingreso.edit'}}" class="btn btn-info"value="{{ $sinop->id }}" id="btn-editar"
+                                {{-- <a  href="{{ route('ingreso.edit'}}" class="btn btn-info"value="{{ $Sinoptico->id }}" id="btn-editar"
                                     title="Editar Ingreso"><i class="fas fa-edit"></i> </a> --}}
-                                @if ($sinop->edicion == 1)
-                                    <a href="{{ route('ingreso.edit', $sinop->id) }}"><i
-                                            class="fas fa-edit btn btn-warning"></i></a>
-                                @endif
+                                <button type="button" class="btn btn-info" onclick="eliminarSinoptico({{ $Sinoptico->id }})"
+                                    title="Eliminar Registro"><i class="fas fa-trash"></i></button>
 
-                                @if ($sinop->edicion == 0)
-                                    <a href="{{ route('salida.pdfIngreso', $sinop->id) }}" class="btn btn-info"><i
-                                            class="fas fa-print"></i></a>
-                                @endif
+
                             </td>
                         </tr>
                     @endforeach
@@ -111,10 +105,10 @@
 
 
 
-    @include('metar.modalRegister', [
-        'id_button' => 'btn_guardar_metar',
+    @include('sinoptico.modalRegister', [
+        'id_button' => 'btn_guardar_sinoptico',
         'title_buton' => 'Guardar Registro',
-        'title_modal' => 'Nuevo Registro Metar',
+        'title_modal' => 'Nuevo Registro sinoptico',
     ])
 
 @stop
@@ -145,36 +139,127 @@
 @stop
 
 @section('js')
-<script>
-    $(document).ready(function() {
-        $(function() {
-            $('.numeroEntero').keypress(function(e) {
-                    if (isNaN(this.value + String.fromCharCode(e.charCode)))
-                        return false;
-                })
-                .on("cut copy paste", function(e) {
-                    e.preventDefault();
-                });
-        });
-        $(function() {
-            $('.soloLetras').bind('keyup input', function() {
-                if (this.value.match(/[^a-zA-Z áéíóúÁÉÍÓÚüÜ]/g)) {
-                    this.value = this.value.replace(/[^a-zA-Z áéíóúÁÉÍÓÚüÜ]/g, '');
-                }
+    <script>
+        $(document).ready(function() {
+            $(function() {
+                $('.numeroEntero').keypress(function(e) {
+                        if (isNaN(this.value + String.fromCharCode(e.charCode)))
+                            return false;
+                    })
+                    .on("cut copy paste", function(e) {
+                        e.preventDefault();
+                    });
             });
+            $(function() {
+                $('.soloLetras').bind('keyup input', function() {
+                    if (this.value.match(/[^a-zA-Z áéíóúÁÉÍÓÚüÜ]/g)) {
+                        this.value = this.value.replace(/[^a-zA-Z áéíóúÁÉÍÓÚüÜ]/g, '');
+                    }
+                });
+            });
+
+
         });
-
-
-    });
-</script>
+    </script>
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.js">
+       </script>
+       <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.css"
+           rel="stylesheet" />
     <script type="text/javascript" charset="utf-8">
         //select2 cuartel
-        $("#select_id_catalogo_Modal").select2({
-            width: 'resolve', // need to override the changed default
-            dropdownParent: $('#modal-register-bloque')
+
+        $('#add_sinoptico').on('click', function() {
+
+            $('#modal_add_sinoptico').modal('show');
         });
-        $(document).on('click', '#add_metar', function() {
-            $("#modal_add_metar").modal("show");
+        $('#btn_guardar_sinoptico').on('click', function() {
+            $.ajax({
+                type: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                },
+                url: "{{ route('sinoptico.create') }}",
+                async: false,
+                data: JSON.stringify({
+                    'fecha_registro': $('#fecha_registro').val(),
+                    'mensaje': $('#mensaje').val(),
+                    'estacion_terminal': $('#estacion_terminal').val()
+                }),
+                success: function(data_response) {
+                    swal.fire({
+                        title: "Guardado!",
+                        text: "!Registro realizado con éxito!",
+                        type: "success",
+                        timer: 2000,
+                        showCancelButton: false,
+                        showConfirmButton: false
+                    });
+                    setTimeout(function() {
+                        location.reload();
+                        limpiarModalsinoptico();
+                    }, 2000);
+                    //toastr["success"]("Registro realizado con éxito!");
+                },
+                error: function(error) {
+
+                    if (error.status == 422) {
+                        Object.keys(error.responseJSON.errors).forEach(function(k) {
+                            toastr["error"](error.responseJSON.errors[k]);
+                            //console.log(k + ' - ' + error.responseJSON.errors[k]);
+                        });
+                    } else if (error.status == 419) {
+                        location.reload();
+                    }
+
+                }
+            })
+        });
+
+
+        function eliminarSinoptico(id) {
+            Swal.fire({
+                title: "Esta seguro que quiere eliminar?",
+                text: "Una vez elminado no podra ver el registro!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Si, estoy seguro!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+
+                    $.ajax({
+                        url: "{{ route('sinoptico.delete') }}",
+                        type: 'POST',
+                        dataType: 'json',
+                        data: {
+                            _token: "{{ csrf_token() }}",
+                            id: id,
+                        },
+                        success: function(data) {
+
+                        }
+                    });
+                    event.preventDefault();
+                }
+                Swal.fire({
+                    title: "Eliminado!",
+                    text: "Su registro fue eliminado.",
+                    icon: "success"
+                });
+                location.reload();
+            });
+
+
+
+        }
+
+
+
+     
+        $(document).on('click', '#add_sinoptico', function() {
+            $("#modal_add_sinoptico").modal("show");
 
             $(".select_id_catalogo_Modal").select2({
                 placeholder: "Seleccione una opcion",
@@ -205,115 +290,16 @@
 
         });
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.js">
-    </script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.css"
-        rel="stylesheet" />
+
 
     <script>
         $(document).ready(function() {
             $('#date_start').val('');
             $('#date_end').val('');
             //editar cuartel
-            $('#btn-editar-va').on('click', function() {
-                $.ajax({
-                    type: 'PUT',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}',
-                    },
-                    url: "{{ route('responsable.update') }}",
-                    async: false,
-                    data: JSON.stringify({
-                        'ci': $('#ci-responsable').val(),
-                        'nombres': $('#nombre-responsable').val(),
-                        'primer_apellido': $('#primer_apellido-responsable').val(),
-                        'segundo_apellido': $('#segundo_apellido-responsable').val(),
-                        'fecha_nacimiento': $('#fecha_nacimiento-responsable').val(),
-                        'genero': $('#genero-responsable').val(),
-                        'telefono': $('#telefono-responsable').val(),
-                        'celular': $('#celular-responsable').val(),
-                        'estado_civil': $('#estado_civil-responsable').val(),
-                        'email': $('#email-responsable').val(),
-                        'domicilio': $('#domicilio-responsable').val(),
-                        'id': $('#btn-editar-va').val()
-                    }),
-                    success: function(data_response) {
-                        swal.fire({
-                            title: "Guardado!",
-                            text: "!Registro actualizado con éxito!",
-                            type: "success",
-                            timer: 2000,
-                            showCancelButton: false,
-                            showConfirmButton: false
-                        });
-                        setTimeout(function() {
-                            location.reload();
-                        }, 2000);
-                        //toastr["success"]("Registro realizado con éxito!");
-                    },
-                    error: function(error) {
-
-                        if (error.status == 422) {
-                            Object.keys(error.responseJSON.errors).forEach(function(k) {
-                                toastr["error"](error.responseJSON.errors[k]);
-                                //console.log(k + ' - ' + error.responseJSON.errors[k]);
-                            });
-                        } else if (error.status == 419) {
-                            location.reload();
-                        }
-
-                    }
-                })
 
 
-            });
-
-            $(document).on('click', '#btn-desactivar', function() {
-                $.ajax({
-                    type: 'GET',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}',
-                    },
-                    url: '/responsable/disable-responsable/' + $(this).val(),
-                    async: false,
-                    success: function(data_response) {
-                        /* swal.fire({
-                             title: data_response.response,
-                             text: "",
-                             type: "success",
-                             timer: 1000,
-                             showCancelButton: false,
-                             showConfirmButton: false
-                         }); */
-                        setTimeout(function() {
-                            $("#modal_add_item").hide();
-                            $(".modal-backdrop").remove();
-                            var table = $('#detalleIngresoTemp').DataTable();
-                            table.ajax.reload();
-                        }, 2000);
-                        //toastr["success"]("Registro realizado con éxito!");
-                    },
-                    error: function(error) {
-
-                        if (error.status == 422) {
-                            Object.keys(error.responseJSON.errors).forEach(function(k) {
-                                toastr["error"](error.responseJSON.errors[k]);
-                                //console.log(k + ' - ' + error.responseJSON.errors[k]);
-                            });
-                        } else if (error.status == 419) {
-                            var table = $('#detalleIngresoTemp').DataTable();
-                            table.ajax.reload();
-                        }
-
-                    }
-                })
-                event.preventDefault();
-            });
-
-            var datatable = $('#metar-data').DataTable({
+            var datatable = $('#sinoptico-data').DataTable({
                 "paging": true,
                 "searching": true,
                 "language": {
@@ -322,33 +308,8 @@
                 },
             });
         });
-        $(document).on('click', '#btn_edit_ingreso', function() {
-            var id = $(this).val();
-            $.ajax({
-                type: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRF-TOKEN': '{{ csrf_token() }}',
-                },
-                url: 'ingreso.edit/' + $(this).val(),
-                async: false,
-                success: function(data_response) {
-                    $("#editmodalCatalogo").modal("show");
+      
 
-                    $('#edit_id_ingreso').val(data_response.response[0].id_ingreso);
-                    $('#edit_descripcion_catalogo').val(data_response.response[0].descripcion_catalogo);
-
-                    $('#edit_id_unidad_medida').val(data_response.response[0].id_unidad_medida);
-                    $('#edit_id_categoria').val(data_response.response[0].id_categoria);
-                    $('#id_catalogo').val(data_response.response[0].id);
-
-                    // $('#edit_id_unidad_medida option[value="' + data_response.response[0].id_unidad_medida + '"]').attr("selected", "selected");
-                    // $('#edit_id_categoria option[value="' + data_response.response[0].id_categoria + '"]').attr("selected", "selected");
-                }
-            })
-
-
-        });
 
 
         if ($('#date_start').val() != '' || $('#date_end').val() != '') {
@@ -373,19 +334,9 @@
         }
         $(document).ready(function() {
 
-            // Create date inputs
-            // minDate = new DateTime($('#date_start'), {
-            //     format: 'YYYY-MM-DD',
-            //     locale: 'es',
-            // });
-            // maxDate = new DateTime($('#date_end'), {
-            //     format: 'YYYY-MM-DD',
-            //     locale: 'es',
-
-            // });
-
+          
             // DataTables initialisation
-            var table = $('#metar-data').DataTable();
+            var table = $('#sinoptico-data').DataTable();
 
             // Refilter the table
             $('#date_start, #date_end').on('change', function() {
@@ -393,24 +344,36 @@
             });
 
         });
+        
         $(document).ready(function() {
-
-            // Create date inputs
-
             $("#fecha_registro").datetimepicker({
                 language: 'es',
                 startDate: new Date(),
-                format: "YYYY-MM-DD HH:mm:ss", // Solo se ocupa la fecha
-                yearRange: "-99:+0", // no hace nada
-                maxDate: "+0m +0d", // no hace nada
-                //format: "YYYY-MM-DD HH:mm:ss", // no se requiere la hora
+                format: "Y-m-d H:m:s", // Solo se ocupa la fecha
+                //format: "yyyy-MM-dd H:m:s", // no se requiere la hora
                 timepicker: false,
                 autoclose: true,
                 //pickTime: false
                 showButtonPanel: true,
             });
+            // Create date inputs
+            minDate = new DateTime($('#date_start'), {
+                format: 'Y-m-d',
+                locale: 'es',
+            });
+            maxDate = new DateTime($('#date_end'), {
+                format: 'Y-m-d',
+                locale: 'es',
 
+            });
 
+            // DataTables initialisation
+            var table = $('#ingreso-data').DataTable();
+
+            // Refilter the table
+            $('#date_start, #date_end').on('change', function() {
+                table.draw();
+            });
 
         });
     </script>
