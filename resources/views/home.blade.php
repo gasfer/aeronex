@@ -1,11 +1,10 @@
 @extends('adminlte::page')
-@section('title', 'Perfil')
-@section('plugins.Datatables', true)
+@section('title', 'siac')
 @section('plugins.Animation', true)
-@section('plugins.Toastr', true)
+
 @section('plugins.Sweetalert2', true)
-@section('plugins.Pace', true)
-@section('plugins.Chartjs', true)
+
+
 
 
 @section('content_header')

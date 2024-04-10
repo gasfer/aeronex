@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'title' => 'CEMENTERIO GAMC', //change title the aplications
+    'title' => 'SIAC', //change title the aplications
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -45,11 +45,12 @@ return [
     */
     
     'logo' => '',
-    'logo_img' => '/img/admin/cbba.png',
-    'logo_img_class' => 'brand-image',
+    'logo_img' => '/img/admin/logo_auth_naabol.png',
+    'logo_img_class' => 'brand-image-xl',
     'logo_img_xl' => null,
-    'logo_img_xl_class' => 'brand-image-xs',
-    'logo_img_alt' => 'AdminLTE',
+    'logo_img_xl_class' => 'brand-image-xl',
+    'logo_img_alt' => 'S I A C',
+
 
     /*
     |--------------------------------------------------------------------------
